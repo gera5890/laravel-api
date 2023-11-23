@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::prefix('v1')->group(function(){
+Route::middleware('auth:sanctum')->prefix('v1')->group(function(){
     Route::apiResource('/tasks',TaskController::class);
-
     Route::patch('/tasks/{task}/complete', CompleteTaskController::class);
 });
 
